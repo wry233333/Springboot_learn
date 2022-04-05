@@ -1,6 +1,7 @@
 package com.wry333.springboot.controller;
 
 
+import com.wry333.springboot.controller.utils.R;
 import com.wry333.springboot.dao.UserDao;
 import com.wry333.springboot.domain.User;
 import com.wry333.springboot.service.UserService;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping(value = "/user")
 public class UserController {
 
     private UserService userService;
@@ -18,13 +19,14 @@ public class UserController {
     }
 
     @GetMapping
-    public  String  test (){
-        return "hello";
+    public R test (){
+        return new R(true,"hello");
     }
 
-    @GetMapping("/{id}")
-    public String test2(@PathVariable int id){
-        User user = userService.findUserById(id);
-        return user.toString();
+    @GetMapping("{id}")
+    public R test2(@PathVariable int id){
+        R r = new R(true,userService.findUserById(id));
+        System.out.println(r);
+        return r;
     }
 }
