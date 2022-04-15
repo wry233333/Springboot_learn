@@ -25,4 +25,9 @@ public class UserController {
     public R test2(@PathVariable int id){
         return new R(true,userService.findUserById(id));
     }
+
+    @DeleteMapping("{id}")
+    public R test3(@PathVariable int id){
+        return new R(true,userService.deleteById(id));
+    }
 }

@@ -24,8 +24,8 @@ class SpringbootApplicationTests {
     @Test
     void save(){
         User user = new User();
-        user.setName("张三");
-        user.setPassword("123654");
+        user.setName("liangliangche");
+        user.setPassword("llc");
         userDao.insert(user);
     }
 
@@ -40,6 +40,12 @@ class SpringbootApplicationTests {
         QueryWrapper<User> wrapper =new QueryWrapper<User>();
         wrapper.like("name","zhangsan");
         userDao.selectList(wrapper);
+    }
+
+    @Test
+    void testDelete(){
+        userDao.deleteById(2);
+        System.out.println("success...");
     }
 
 }
