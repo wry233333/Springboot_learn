@@ -9,6 +9,10 @@ spring:
       url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
       username: root
       password: 123654
+  mvc:
+    view:
+      prefix : /
+      suffix : .jsp
 
 
 mybatis-plus:
@@ -18,6 +22,5 @@ mybatis-plus:
       id-type: auto
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
 
 

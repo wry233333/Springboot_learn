@@ -1,13 +1,14 @@
 package com.wry333.springboot.controller;
 
 
-import com.wry333.springboot.controller.utils.R;
+import com.wry333.springboot.domain.User;
 import com.wry333.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
-@RequestMapping(value = "/user")
+@Controller
 public class UserController {
 
     private UserService userService;
@@ -16,18 +17,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public R test (){
-        return new R(true,"hello");
+    @RequestMapping("/user")
+    public ModelAndView test (ModelAndView mav){
+        mav.setViewName("test");
+        User user = new  User();
+        user.setName("zhangsan");
+        mav.addObject("stu",user);
+        return mav;
     }
 
-    @GetMapping("{id}")
-    public R test2(@PathVariable int id){
-        return new R(true,userService.findUserById(id));
-    }
-
-    @DeleteMapping("{id}")
-    public R test3(@PathVariable int id){
-        return new R(true,userService.deleteById(id));
-    }
 }
